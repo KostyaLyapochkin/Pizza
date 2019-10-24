@@ -10,8 +10,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Ingredient(
 	@field: PrimaryKey(autoGenerate = true)
-	val ket: Int,
-	@field:SerializedName("itemKey")
+	val key: Int,
+	@field:SerializedName("id")
 	val id: Int,
 	@field:SerializedName("price")
 	val price: Float,

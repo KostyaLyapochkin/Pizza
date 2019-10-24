@@ -47,6 +47,11 @@ class PizzaProfileViewModel @Inject constructor(
                 }
             }
         }
+
+        if (pizza!!.price == 0.0f) {
+            pizza!! + basePrice
+        }
+
         commonPrice.set(pizza!!.price.toString())
         adapter.get()!!.ingredientsList = ingredients
         progressbarVisibility.set(View.GONE)
