@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Pizza</string>
+
+    <!-- Main Screen -->
+    <string name="price_main_screen">$%s</string>
+    <string name="toolbar_title_main_screen">Nenno’s Pizza</string>
+    <string name="add_cart_main_screen">Add Cart</string>
+
+    <!-- Pizza Profile Screen -->
+    <string name="custom_pizza_profile_screen">Custom Pizza</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="add_to_cart_message">Add to cart <i>($%s)</i></string>
+
+    <!-- Cart -->
+    <string name="toolbar_title_cart">Cart</string>
+    <string name="add_drinks_cart">Add Drinks</string>
+    <string name="checkout">Checkout <i>($%s)</i></string>
+
+    <!-- Drinks -->
+    <string name="toolbar_title_drinks">Drinks</string>
+
+
+</resources>

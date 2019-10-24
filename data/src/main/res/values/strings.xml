@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">data</string>
+    <string name="server_connection_exception">Server connection exception</string>
+    <string name="error_handling_timeout">Error handling timeout</string>
+</resources>

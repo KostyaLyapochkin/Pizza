@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/drinksMenu"
+        android:icon="@drawable/ic_drinks_menu"
+        android:title="@string/add_drinks_cart"
+        app:showAsAction="always"/>
+
+</menu>
