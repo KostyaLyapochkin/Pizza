@@ -8,6 +8,7 @@ import by.domain.entities.Ingredient
 import by.domain.entities.Pizza
 import by.domain.entities.PizzasRequest
 import by.domain.interactors.PizzaInteractors
+import by.pizza.R
 import by.pizza.di.Injector
 import by.pizza.features.base.BaseViewModel
 import by.pizza.features.pizzaprofile.PizzaProfileActivity
@@ -43,25 +44,35 @@ class MainViewModel @Inject constructor(
     private lateinit var ingredients: List<Ingredient>
 
     init {
-        showPizzasList()
+        showCartValue()
     }
 
-    private fun showPizzasList() = launch {
-        val pizzasRequestDeferred = async { pizzaInteractors.getPizzasList() }
-        val ingredientsDeferred = async { pizzaInteractors.getIngredientsList() }
-
-        pizzasRequest = pizzasRequestDeferred.await()
-        ingredients = ingredientsDeferred.await()
-
-        pizzasAdapter.get()!!.pizzasList = withContext(Dispatchers.Default) {
-            pizzasRequest.pizzas.map {
-                it.price = pizzasRequest.basePrice
-                pizzaHelper.ingredientsList = ingredients
-                pizzaHelper.makeProfile(it)
+    override fun onStart() {
+        super.onStart()
+        launch(CoroutineExceptionHandler { _, throwable ->
+            throwable.message?.let {
+                showToast(it)
+                progressBarVisibility.set(View.GONE)
             }
-        }.toMutableList()
-        progressBarVisibility.set(View.GONE)
+        }) {
+            val pizzasRequestDeferred = async { pizzaInteractors.getPizzasList() }
+            val ingredientsDeferred = async { pizzaInteractors.getIngredientsList() }
 
+            pizzasRequest = pizzasRequestDeferred.await()
+            ingredients = ingredientsDeferred.await()
+
+            pizzasAdapter.get()!!.pizzasList = withContext(Dispatchers.Default) {
+                pizzasRequest.pizzas.map {
+                    it.price = pizzasRequest.basePrice
+                    pizzaHelper.ingredientsList = ingredients
+                    pizzaHelper.makeProfile(it)
+                }
+            }.toMutableList()
+            progressBarVisibility.set(View.GONE)
+        }
+    }
+
+    private fun showCartValue() {
         launch {
             pizzaInteractors.getCartSize().collect {
                 cartCount.set(it.toString())
@@ -72,16 +83,21 @@ class MainViewModel @Inject constructor(
                 }
             }
         }
+
     }
 
     fun addCustomPizza() {
-        startActivity(
-            PizzaProfileActivity.newInstance(
-                context,
-                pizzasRequest.basePrice,
-                ingredients
+        if (!::pizzasRequest.isInitialized) {
+            showToast(context.getString(R.string.internet_not_available))
+        } else {
+            startActivity(
+                PizzaProfileActivity.newInstance(
+                    context,
+                    pizzasRequest.basePrice,
+                    ingredients
+                )
             )
-        )
+        }
     }
 
     private fun savePizza(pizza: Pizza) = launch {

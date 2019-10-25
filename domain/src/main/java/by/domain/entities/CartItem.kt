@@ -1,6 +1,6 @@
 package by.domain.entities
 
-class CartItem(
+data class CartItem(
     val itemKey: Int,
     val cartItemEnum: CartItemEnum,
     val name: String?,

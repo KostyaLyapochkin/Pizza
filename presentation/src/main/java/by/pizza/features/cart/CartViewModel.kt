@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CartViewModel @Inject constructor(
+open class CartViewModel @Inject constructor(
     private val context: Context,
     private val cartInteractor: CartInteractor
 ) : BaseViewModel() {
@@ -28,7 +28,7 @@ class CartViewModel @Inject constructor(
         updateScreen()
     }
 
-    private fun updateScreen() = launch {
+    fun updateScreen() = launch {
 
         cartInteractor.getCartList().collect {
             var cartSum = 0.0f

@@ -1,23 +1,14 @@
 package by.data.local
 
-import by.data.local.preferences.PreferencesStorage
 import by.data.database.DatabaseStorage
 import by.domain.entities.Drink
 import by.domain.entities.Pizza
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class Cache @Inject constructor(
-    private val preferencesStorage: PreferencesStorage,
+open class Cache @Inject constructor(
     private val database: DatabaseStorage
 ) {
-
-    fun setFixPrice(fixPrice: Float) {
-        preferencesStorage.fixPrice = fixPrice
-    }
-
-    fun getFixPrice() = preferencesStorage.fixPrice
 
     fun getCartDrinksList() = database.getDrinkDao().getDrinksList()
 

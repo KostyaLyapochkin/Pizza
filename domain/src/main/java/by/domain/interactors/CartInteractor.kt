@@ -5,7 +5,7 @@ import by.domain.entities.Pizza
 import by.domain.repository.IRepository
 import javax.inject.Inject
 
-class CartInteractor @Inject constructor(
+open class CartInteractor @Inject constructor(
     private val repository: IRepository
 ) {
 

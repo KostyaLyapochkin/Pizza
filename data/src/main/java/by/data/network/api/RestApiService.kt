@@ -5,7 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RestApiService @Inject constructor(
+open class RestApiService @Inject constructor(
     private val restApi: RestApi
 ) {
 

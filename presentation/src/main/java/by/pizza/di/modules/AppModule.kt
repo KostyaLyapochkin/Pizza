@@ -2,8 +2,6 @@ package by.pizza.di.modules
 
 import android.content.Context
 import androidx.room.Room
-import by.data.local.preferences.IPreferencesStorage
-import by.data.local.preferences.PreferencesStorage
 import by.data.database.DatabaseStorage
 import by.data.database.PIZZA_DATABASE_STORAGE
 import by.data.local.Repository
@@ -31,10 +29,6 @@ internal class AppModule(
 
     @Module
     interface InnerAppModule {
-
-        @Binds
-        @Singleton
-        fun providePreferencesStorage(preferences: PreferencesStorage): IPreferencesStorage
 
         @Binds
         @Singleton

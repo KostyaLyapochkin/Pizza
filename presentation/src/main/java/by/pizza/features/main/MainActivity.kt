@@ -24,6 +24,11 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         initView()
     }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.onStart()
+    }
+
     private fun initView() {
         setSupportActionBar(binding.toolbar)
     }

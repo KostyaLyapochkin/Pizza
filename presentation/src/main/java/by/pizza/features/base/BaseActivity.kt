@@ -42,11 +42,11 @@ abstract class BaseActivity<VM : BaseViewModel, B : ViewDataBinding> : AppCompat
             })
 
             toastMessageEvent.observe(this@BaseActivity, EventObserver {
-                Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, it, Toast.LENGTH_LONG).show()
             })
 
             toastMessageEvent.observe(this@BaseActivity, EventObserver {
-                Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, it, Toast.LENGTH_LONG).show()
             })
 
             startActivityIntentEvent.observe(this@BaseActivity, EventObserver {

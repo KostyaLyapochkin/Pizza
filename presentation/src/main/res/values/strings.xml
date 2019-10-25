@@ -14,10 +14,12 @@
     <!-- Cart -->
     <string name="toolbar_title_cart">Cart</string>
     <string name="add_drinks_cart">Add Drinks</string>
-    <string name="checkout">Checkout <i>($%s)</i></string>
+    <string name="checkout_cart">Checkout <i>($%s)</i></string>
 
     <!-- Drinks -->
     <string name="toolbar_title_drinks">Drinks</string>
+
+    <string name="internet_not_available">Internet not available</string>
 
 
 </resources>

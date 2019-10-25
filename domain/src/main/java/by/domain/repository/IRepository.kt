@@ -5,8 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface IRepository {
 
-    fun getFixPrice(): Float
-
     suspend fun getPizzasRequest(): PizzasRequest
 
     suspend fun getIngredientsList(): List<Ingredient>

@@ -25,11 +25,9 @@ abstract class BaseViewModel : LifeCycleViewModel(), CoroutineScope {
 
     internal val startActivityIntentEvent = MutableLiveData<Event<Intent>>()
     internal val toastMessageEvent = MutableLiveData<Event<String>>()
-    internal val toastMessageResEvent = MutableLiveData<Event<Int>>()
     internal val finishEvent = MutableLiveData<Event<Unit>>()
 
     internal val dialogEvent = MutableLiveData<Event<DialogFragment>>()
-    internal val dialogRes = MutableLiveData<Event<Int>>()
 
     internal val addCartEvent = MutableLiveData<Event<Unit>>()
 
@@ -41,20 +39,8 @@ abstract class BaseViewModel : LifeCycleViewModel(), CoroutineScope {
         toastMessageEvent.value = Event(message)
     }
 
-    protected open fun showToast(@StringRes message: Int) {
-        toastMessageResEvent.value = Event(message)
-    }
-
-    protected open fun showErrorDialog(@StringRes message: Int) {
-        dialogRes.value = Event(message)
-    }
-
     protected fun showDialog(dialog: DialogFragment) {
         dialogEvent.value = Event(dialog)
-    }
-
-    protected open fun showDialog(@StringRes message: Int) {
-        dialogRes.value = Event(message)
     }
 
     protected fun closeCurrentActivity() {

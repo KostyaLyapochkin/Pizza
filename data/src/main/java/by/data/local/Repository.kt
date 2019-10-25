@@ -8,16 +8,12 @@ import by.domain.repository.IRepository
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
-class Repository @Inject constructor(
+open class Repository @Inject constructor(
     private val cache: Cache,
     private val restApiService: RestApiService
 ) : IRepository {
 
-    override fun getFixPrice() = cache.getFixPrice()
-
-    override suspend fun getPizzasRequest() = restApiService.getPizzasList().also {
-        cache.setFixPrice(it.basePrice)
-    }
+    override suspend fun getPizzasRequest() = restApiService.getPizzasList()
 
     override suspend fun getIngredientsList() = restApiService.getIngredientsList()
 
