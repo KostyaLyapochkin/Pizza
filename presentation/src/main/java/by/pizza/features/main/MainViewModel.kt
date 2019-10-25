@@ -69,6 +69,7 @@ class MainViewModel @Inject constructor(
                 }
             }.toMutableList()
             progressBarVisibility.set(View.GONE)
+            UIVisibility.set(View.VISIBLE)
         }
     }
 
@@ -87,17 +88,13 @@ class MainViewModel @Inject constructor(
     }
 
     fun addCustomPizza() {
-        if (!::pizzasRequest.isInitialized) {
-            showToast(context.getString(R.string.internet_not_available))
-        } else {
-            startActivity(
-                PizzaProfileActivity.newInstance(
-                    context,
-                    pizzasRequest.basePrice,
-                    ingredients
-                )
+        startActivity(
+            PizzaProfileActivity.newInstance(
+                context,
+                pizzasRequest.basePrice,
+                ingredients
             )
-        }
+        )
     }
 
     private fun savePizza(pizza: Pizza) = launch {

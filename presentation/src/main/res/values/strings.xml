@@ -9,12 +9,12 @@
     <!-- Pizza Profile Screen -->
     <string name="custom_pizza_profile_screen">Custom Pizza</string>
     <string name="add_to_cart">Add to cart</string>
-    <string name="add_to_cart_message">Add to cart <i>($%s)</i></string>
+    <string name="add_to_cart_message">Add to cart </string>
 
     <!-- Cart -->
     <string name="toolbar_title_cart">Cart</string>
     <string name="add_drinks_cart">Add Drinks</string>
-    <string name="checkout_cart">Checkout <i>($%s)</i></string>
+    <string name="checkout_cart">Checkout</string>
 
     <!-- Drinks -->
     <string name="toolbar_title_drinks">Drinks</string>

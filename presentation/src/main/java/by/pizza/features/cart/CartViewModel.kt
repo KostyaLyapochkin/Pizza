@@ -21,7 +21,7 @@ open class CartViewModel @Inject constructor(
         removeItem(it)
     })
 
-    val commonPrice = ObservableField<String>()
+    val commonPrice = ObservableField("")
     override val progressbarVisibility = ObservableInt(View.GONE)
 
     init {
